@@ -10,9 +10,7 @@ dotenv.config();
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
-console.log('Before app creation');
 const app = next({ dev });
-console.log('After app creation');
 const handle = app.getRequestHandler();
 
 const { SHOPIFY_API_SECRET_KEY, SHOPIFY_API_KEY } = process.env; 
@@ -36,7 +34,7 @@ app.prepare().then(() => {
 
   server.use(verifyRequest());
   server.use(async (ctx) => {
-    await handle(ctx.req, ctx.req);
+    await handle(ctx.req, ctx.res);
     ctx.respond = false;
     ctx.res.statusCode = 200;
     return
