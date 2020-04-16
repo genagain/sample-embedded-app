@@ -27,7 +27,7 @@ class Index extends React.Component {
         {emptyState ? (
           <Layout>
             <EmptyState
-              heading="Discount your products temporarily"
+              heading="Select products to start"
               action={{
                 content: 'Select products',
                 onAction: () => this.setState({ open: true }),
